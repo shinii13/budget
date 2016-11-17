@@ -24,24 +24,15 @@ const Main =  React.createClass({
         var dateStart = today.getFullYear()+ '-' +((today.getMonth())< 10 ? '0' : '') + today.getMonth()+ '-' +(today.getDate() < 10 ? '0' : '') + today.getDate();
         this.info(dateToday, dateStart);
         return {
-            data:
-                [
-                    {
-                        "main":
-                            [
-                            ],
-                        "img": '',
-                        "category":[
-                            {
-                                "children":[]
-                            }
-                        ],
-                        "news":
-                            [
-                            ]
-                    }
-                ],
+
+            data: {
+                category: [
+                {
+                    "children":[]
+                }
+            ]},
             date: dateToday,
+            dateStart: dateStart,
             amount:'',
             category:'0',
             subcategory: '0',
@@ -55,7 +46,7 @@ const Main =  React.createClass({
 
     categor: function() {
         $.ajax({
-            url: './json/main.json',
+            url: '/web/category',
             dataType: 'json',
             success: function(data) {
                 return this.setState({data: data});
@@ -66,10 +57,11 @@ const Main =  React.createClass({
         })
     },
     graf: function(data) {
+        console.log(data);
         var obj = {};
         var a = '[["Money","Money per Month"]';
         for (var i = 0; i < data.length; i++) {
-            var str = data[i].id_categor;
+            var str = data[i].categorName;
             if (str in obj)
                 obj[str] = parseInt(obj[str]) + parseInt(data[i].sum);
             else
@@ -85,7 +77,6 @@ const Main =  React.createClass({
         console.log(a);
     },
     info: function (dateToday, dateStart) {
-
         $.ajax({
             url: '/web/api/date',
             dataType: 'json',
@@ -119,11 +110,12 @@ const Main =  React.createClass({
     createAmount() {
         $.ajax({
             url: '/web/api',
-            data: {date: this.state.date, sum: this.state.amount, id_categor: this.state.category, comments: this.state.note},
+            data: {date: this.state.date, sum: this.state.amount, categorId: this.state.category, subcategorId: this.state.subcategory, comments: this.state.note,},
             type: "POST",
             dataType: 'json',
             success: function(data) {
                 alert(data);
+                this.info(this.state.date, this.state.dateStart);
             }.bind(this),
             error: function(xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -208,8 +200,8 @@ const Main =  React.createClass({
                                         >
 
                                             {
-                                                this.state.data[0].category.map(function (item) {
-                                                    return (<option key={item.type} value={item.type}>{item.name}</option>)
+                                                this.state.data.category.map(function (item) {
+                                                    return (<option key={item.id} value={item.id}>{item.name}</option>)
 
                                                 })
                                             }
@@ -222,8 +214,8 @@ const Main =  React.createClass({
                                             onChange={this.handleSubcategory}
                                         >
                                             {
-                                                this.state.data[0].category[this.state.category].children.map(function (item) {
-                                                    return (<option key={item.type} value={item.type}>{item.name}</option>)
+                                                this.state.data.category[this.state.category].children.map(function (item) {
+                                                    return (<option key={item.subcategorId} value={item.subcategorId}>{item.subcategorName}</option>)
 
                                                 })
                                             }
@@ -250,6 +242,7 @@ const Main =  React.createClass({
                                     <th>Дата</th>
                                     <th>Имя</th>
                                     <th>Категория</th>
+                                    <th>Подкатегория</th>
                                     <th>Сумма</th>
                                     <th>Комментарий</th>
                                 </tr>
@@ -262,7 +255,8 @@ const Main =  React.createClass({
                                                 <td className="footerUser">{index+1}</td>
                                                 <td className="footerUser">{item.date}</td>
                                                 <td>{item.userName}</td>
-                                                <td>{item.id_categor}</td>
+                                                <td>{item.categorName}</td>
+                                                <td>{item.subcategorName}</td>
                                                 <td className="footerUser">{item.sum}</td>
                                                 <td>{item.comments}</td>
 

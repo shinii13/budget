@@ -20,7 +20,8 @@ class CreatAmountController extends Controller
         $request = Request::createFromGlobals();
         $date = $request->request->get('date');
         $sum = $request->request->get('sum');
-        $idcategor = $request->request->get('id_categor');
+        $categorId = $request->request->get('categorId');
+        $subcategorId = $request->request->get('subcategorId');
         $comments = $request->request->get('comments');
         $userName = $this->get('security.context')->getToken()->getUsername();
 
@@ -32,7 +33,8 @@ class CreatAmountController extends Controller
             $amount = new Amount();
             $amount->setUserName($userName);
             $amount->setSum($sum);
-            $amount->setIdCategor($idcategor);
+            $amount->setCategorId($categorId);
+            $amount->setSubcategorId($subcategorId);
             $amount->setDate($date);
             $amount->setComments($comments);
             $manager->persist($amount);

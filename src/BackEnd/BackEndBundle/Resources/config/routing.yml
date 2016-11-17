@@ -1,6 +1,11 @@
 back_end_back_end_homepage:
     path:     /
-    defaults: { _controller: BackEndBackEndBundle:Default:index }
+    defaults: { _controller: BackEndBackEndBundle:CategorJSON:index }
+
+back_end_back_end_categor:
+    path:     /category
+    defaults: { _controller: BackEndBackEndBundle:CategorJSON:index }
+
 
 back_end_back_end_creatamount:
     path:     /api

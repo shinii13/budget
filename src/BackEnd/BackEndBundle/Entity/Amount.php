@@ -31,7 +31,11 @@ class Amount
     /**
      * @ORM\Column(type="string")
      */
-    protected $id_categor;
+    protected $categorId;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $subcategorId;
     /**
      * @ORM\Column(type="text")
      */
@@ -62,7 +66,6 @@ class Amount
     {
         $this->setUpdated(new \DateTime());
     }
-
 
 
 
@@ -123,26 +126,49 @@ class Amount
     }
 
     /**
-     * Set id_categor
+     * Set categorId
      *
-     * @param string $idCategor
+     * @param string $categorId
      * @return Amount
      */
-    public function setIdCategor($idCategor)
+    public function setCategorId($categorId)
     {
-        $this->id_categor = $idCategor;
+        $this->categorId = $categorId;
 
         return $this;
     }
 
     /**
-     * Get id_categor
+     * Get categorId
      *
      * @return string 
      */
-    public function getIdCategor()
+    public function getCategorId()
     {
-        return $this->id_categor;
+        return $this->categorId;
+    }
+
+    /**
+     * Set subcategorId
+     *
+     * @param string $subcategorId
+     * @return Amount
+     */
+    public function setSubcategorId($subcategorId)
+    {
+        $this->subcategorId = $subcategorId;
+
+        return $this;
+    }
+
+    /**
+     * Get subcategorId
+     *
+     * @return string 
+     */
+    public function getSubcategorId()
+    {
+        return $this->subcategorId;
     }
 
     /**
