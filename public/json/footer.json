@@ -1,0 +1,22 @@
+[
+  {
+    "name": "main",
+    "text": "О нас"
+  },
+  {
+    "name": "amenities",
+    "text": "Услуги"
+  },
+  {
+    "name": "foto",
+    "text": "Фотогаллерея"
+  },
+  {
+    "name": "reviews",
+    "text": "Отзывы"
+  },
+  {
+    "name": "contacts",
+    "text": "Контакты"
+  }
+]

@@ -1,0 +1,21 @@
+back_end_back_end_homepage:
+    path:     /
+    defaults: { _controller: BackEndBackEndBundle:Default:index }
+
+back_end_back_end_creatamount:
+    path:     /api
+    defaults: { _controller: BackEndBackEndBundle:CreatAmount:index }
+    requirements:
+        methods:  POST
+
+back_end_back_end_login:
+    path:     /api/login
+    defaults: { _controller: BackEndBackEndBundle:Login:index }
+    requirements:
+        methods:  POST
+
+back_end_back_end_date:
+    path:     /api/date
+    defaults: { _controller: BackEndBackEndBundle:Date:index }
+    requirements:
+        methods:  POST

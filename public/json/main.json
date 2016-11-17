@@ -1,0 +1,52 @@
+[
+  {
+    "category":
+    [
+      {
+        "type": "0",
+        "name": "Еда",
+        "children":
+                [
+                  {
+                    "type": "0",
+                    "name": "---Молочка"
+                  },
+                  {
+                    "type": "1",
+                    "name": "---прочее"
+                  }
+                ]
+      },
+      {
+        "type": "1",
+        "name": "Развлечения",
+        "children":
+          [
+            {
+              "type": "0",
+              "name": "---zxczxc"
+            },
+            {
+              "type": "1",
+              "name": "---sdf"
+            }
+          ]
+      },
+      {
+        "type": "2",
+        "name": "Транспорт",
+        "children":
+        [
+          {
+            "type": "0",
+            "name": "---sdf"
+          },
+          {
+            "type": "1",
+            "name": "---erer"
+          }
+        ]
+      }
+    ]
+  }
+]
